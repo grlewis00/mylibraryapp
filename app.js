@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json())  
+require('./models');
 
 // set up author routes
 const authorRouter = require('./routes/authorRouter')

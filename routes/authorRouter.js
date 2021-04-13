@@ -10,7 +10,7 @@ const authorController = require('../controllers/authorController.js')
 authorRouter.get('/', authorController.getAllAuthors)
 
 // handle the GET request to get all authors by ID
-authorRouter.get('/:id', authorController.getAuthorByID)
+authorRouter.get('/:authorId', authorController.getOneAuthor)
 
 // handle POST requests to add one author
 authorRouter.post('/', authorController.addAuthor)
