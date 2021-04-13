@@ -15,5 +15,8 @@ authorRouter.get('/:authorId', authorController.getOneAuthor)
 // handle POST requests to add one author
 authorRouter.post('/', authorController.addAuthor)
 
+// handle POST requests to update an author
+authorRouter.post('/:authorId', authorController.updateAuthor)
+
 // export the router
 module.exports = authorRouter

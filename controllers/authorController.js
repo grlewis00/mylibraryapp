@@ -29,6 +29,23 @@ const getOneAuthor = async (req, res) => {
     }
 }
 
+// update an author
+const updateAuthor = async (req, res) => {
+    try {
+        const oneAuthor = await Author.findOne( {"authorId": req.params.id})
+        if (oneAuthor === null) {   // no author found in database
+            res.status(404)
+            return res.send("Author not found")
+        }
+        oneAuthor = Author.create(req.body)
+        return res.send(oneAuthor)  // author was found
+    } catch (err) {     // error occurred
+            res.status(400)
+            return res.send("Database query failed")
+    }
+}
+
+// add a new author
 const addAuthor = async (req, res) => {
     const author = req.body
     try {
@@ -44,26 +61,6 @@ const addAuthor = async (req, res) => {
 module.exports = {
   getAllAuthors,
   getOneAuthor, 
-  addAuthor
+  addAuthor,
+  updateAuthor
 }
-
-
-
-
-
-// // handle requests to add an author
-// const addAuthor = (req, res) => {
-//     // assemble a new author
-//     newAuthor = req.body
-//     // add to database
-//     authors.push(newAuthor)
-//     // return entire authors list to browser as a check that it worked
-//     res.send(authors)
-// }
-
-// module.exports = {
-//     getAllAuthors,
-//     getAuthorByID, 
-//     addAuthor
-// }
-
