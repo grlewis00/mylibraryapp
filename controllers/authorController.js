@@ -33,7 +33,6 @@ const addAuthor = async (req, res) => {
     const author = req.body
     try {
         const author = await Author.create(req.body);
-        authors.push(author)
         const authors = await Author.find()
         return res.send(authors)
     } catch (err) {     // error occurred
